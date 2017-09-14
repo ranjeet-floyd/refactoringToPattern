@@ -4,6 +4,8 @@ package fry.future.chainConstructors;
  *
  * @author ranjeet
  */
-public class ChainConstructor {
+public interface CapitalStrategy {
+
+    void strategy();
 
 }
