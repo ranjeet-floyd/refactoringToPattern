@@ -38,7 +38,7 @@ public class LoanCreationMethod {
     /*
     Catch all constructor
      */
-    private LoanCreationMethod(LOAN_TYPE loan_type, float notional, float outstanding, int rating, LocalDate expiry, LocalDate maturity, CapitalStrategy strategy) {
+    protected LoanCreationMethod(LOAN_TYPE loan_type, float notional, float outstanding, int rating, LocalDate expiry, LocalDate maturity, CapitalStrategy strategy) {
         this.loan_type = loan_type;
         this.notional = notional;
         this.outstanding = outstanding;

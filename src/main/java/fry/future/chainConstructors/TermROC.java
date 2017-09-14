@@ -6,9 +6,13 @@ package fry.future.chainConstructors;
  */
 public class TermROC implements CapitalStrategy {
 
+
+    /*
+    Sample calculation
+     */
     @Override
-    public void strategy() {
-        System.out.println(this.getClass().getCanonicalName());
+    public double calc(Loan loan) {
+        return loan.getRating() * loan.getOutstanding();
     }
 
 }

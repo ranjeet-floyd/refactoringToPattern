@@ -9,9 +9,13 @@ public class RevolvingTermROC implements CapitalStrategy {
     public RevolvingTermROC() {
     }
 
+    /*
+    Sample calculation
+     */
     @Override
-    public void strategy() {
-        System.out.println(this.getClass().getSimpleName());
+    public double calc(Loan loan) {
+        return loan.getRating() * loan.getOutstanding();
     }
+
 
 }

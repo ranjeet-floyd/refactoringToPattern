@@ -6,6 +6,6 @@ package fry.future.chainConstructors;
  */
 public interface CapitalStrategy {
 
-    void strategy();
+    double calc(Loan loan);
 
 }

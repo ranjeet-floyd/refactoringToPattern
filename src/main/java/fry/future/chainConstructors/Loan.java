@@ -26,6 +26,9 @@ public class Loan {
     private final LocalDate maturity;
     private final CapitalStrategy strategy;
 
+    public double calcCapital() {
+        return strategy.calc(this);
+    }
     public Loan(float notional, float outstanding, int rating, LocalDate expiry) {
         this.strategy = new TermROC();
         this.notional = notional;
