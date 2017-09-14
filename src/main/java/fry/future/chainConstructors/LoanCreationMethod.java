@@ -10,6 +10,7 @@ import java.time.LocalDate;
  */
 public class LoanCreationMethod {
 
+    private final LOAN_TYPE loan_type;
     private final float notional;
     private final float outstanding;
     private final int rating;
@@ -17,30 +18,28 @@ public class LoanCreationMethod {
     private final LocalDate maturity;
     private final CapitalStrategy strategy;
 
+
     public static LoanCreationMethod newTermLoan(float notional, float outstanding, int rating, LocalDate expiry) {
-        LoanCreationMethod termLoan = new LoanCreationMethod(notional, outstanding, rating, expiry, null, new TermROC());
-        return termLoan;
+        return new LoanCreationMethod(LOAN_TYPE.TERM_LOAN, notional, outstanding, rating, expiry, null, new TermROC());
     }
 
     public static LoanCreationMethod newTermLoanWithStrategy(float notional, float outstanding, int rating, LocalDate expiry, CapitalStrategy strategy) {
-        LoanCreationMethod termLoan = new LoanCreationMethod(notional, outstanding, rating, expiry, null, strategy);
-        return termLoan;
+        return new LoanCreationMethod(LOAN_TYPE.TERM_LOAN, notional, outstanding, rating, expiry, null, strategy);
     }
 
     public static LoanCreationMethod newRevolver(float notional, float outstanding, int rating, LocalDate expiry, LocalDate maturity) {
-        LoanCreationMethod termLoan = new LoanCreationMethod(notional, outstanding, rating, expiry, maturity, new RevolvingTermROC());
-        return termLoan;
+        return new LoanCreationMethod(LOAN_TYPE.REVOLVER, notional, outstanding, rating, expiry, maturity, new RevolvingTermROC());
     }
 
     public static LoanCreationMethod newRevolverWithStrategy(float notional, float outstanding, int rating, LocalDate expiry, LocalDate maturity, CapitalStrategy strategy) {
-        LoanCreationMethod termLoan = new LoanCreationMethod(notional, outstanding, rating, expiry, maturity, strategy);
-        return termLoan;
+        return new LoanCreationMethod(LOAN_TYPE.REVOLVER, notional, outstanding, rating, expiry, maturity, strategy);
     }
 
     /*
     Catch all constructor
      */
-    private LoanCreationMethod(float notional, float outstanding, int rating, LocalDate expiry, LocalDate maturity, CapitalStrategy strategy) {
+    private LoanCreationMethod(LOAN_TYPE loan_type, float notional, float outstanding, int rating, LocalDate expiry, LocalDate maturity, CapitalStrategy strategy) {
+        this.loan_type = loan_type;
         this.notional = notional;
         this.outstanding = outstanding;
         this.rating = rating;
@@ -73,9 +72,14 @@ public class LoanCreationMethod {
         return strategy;
     }
 
+    public LOAN_TYPE getLoan_type() {
+        return loan_type;
+    }
+
     @Override
     public String toString() {
-        return "LoanCreationMethod{" + "notional=" + notional + ", outstanding=" + outstanding + ", rating=" + rating + ", expiry=" + expiry + ", maturity=" + maturity + ", strategy=" + strategy + '}';
+        return "LoanCreationMethod{" + "loan_type=" + loan_type + ", notional=" + notional + ", outstanding=" + outstanding + ", rating=" + rating + ", expiry=" + expiry + ", maturity=" + maturity + ", strategy=" + strategy + '}';
     }
+
 
 }
