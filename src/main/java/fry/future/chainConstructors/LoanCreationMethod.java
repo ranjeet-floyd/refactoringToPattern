@@ -17,22 +17,22 @@ public class LoanCreationMethod {
     private final LocalDate maturity;
     private final CapitalStrategy strategy;
 
-    public LoanCreationMethod newTermLoan(float notional, float outstanding, int rating, LocalDate expiry) {
+    public static LoanCreationMethod newTermLoan(float notional, float outstanding, int rating, LocalDate expiry) {
         LoanCreationMethod termLoan = new LoanCreationMethod(notional, outstanding, rating, expiry, null, new TermROC());
         return termLoan;
     }
 
-    public LoanCreationMethod newTermLoanWithStrategy(float notional, float outstanding, int rating, LocalDate expiry, CapitalStrategy strategy) {
+    public static LoanCreationMethod newTermLoanWithStrategy(float notional, float outstanding, int rating, LocalDate expiry, CapitalStrategy strategy) {
         LoanCreationMethod termLoan = new LoanCreationMethod(notional, outstanding, rating, expiry, null, strategy);
         return termLoan;
     }
 
-    public LoanCreationMethod newRevolver(float notional, float outstanding, int rating, LocalDate expiry, LocalDate maturity) {
+    public static LoanCreationMethod newRevolver(float notional, float outstanding, int rating, LocalDate expiry, LocalDate maturity) {
         LoanCreationMethod termLoan = new LoanCreationMethod(notional, outstanding, rating, expiry, maturity, new RevolvingTermROC());
         return termLoan;
     }
 
-    public LoanCreationMethod newRevolverWithStrategy(float notional, float outstanding, int rating, LocalDate expiry, LocalDate maturity, CapitalStrategy strategy) {
+    public static LoanCreationMethod newRevolverWithStrategy(float notional, float outstanding, int rating, LocalDate expiry, LocalDate maturity, CapitalStrategy strategy) {
         LoanCreationMethod termLoan = new LoanCreationMethod(notional, outstanding, rating, expiry, maturity, strategy);
         return termLoan;
     }
